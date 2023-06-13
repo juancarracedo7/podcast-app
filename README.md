@@ -36,7 +36,7 @@ Este es el archivo README para la aplicación de Podcast, la cual te permite ver
     Navega al directorio backend:
 
 
-    cd backend
+    cd api
     Instala las dependencias del backend:
     npm install
 
@@ -54,7 +54,7 @@ Este es el archivo README para la aplicación de Podcast, la cual te permite ver
 
     Navega al directorio frontend:
 
-    cd frontend
+    cd client
     Instala las dependencias del frontend:
 
 
