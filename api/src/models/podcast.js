@@ -1,15 +1,40 @@
-const { Sequelize } = require("sequelize/types");
-const db = require("../database/index")
+const {  DataTypes } = require('sequelize');
+const db = require('../database/index');
 
-const Podcast = db.define("podcast", {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
+const Podcast = db.define('Podcast', {
+  id: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  name: {
+    type: DataTypes.TEXT,
+  },
+  image : {
+    type: DataTypes.STRING,
+    },
+    description: {
+        type: DataTypes.TEXT,
+    },
+    price : {
+        type: DataTypes.INTEGER,
     },
     title: {
-        type: Sequelize.STRING
+        type: DataTypes.TEXT,
     },
-}
-);
+    link : {
+        type: DataTypes.STRING,
+    },
+    artist : {
+        type: DataTypes.STRING,
+    },
+    category : {
+        type: DataTypes.STRING,
+    },
+    releaseDate : {
+        type: DataTypes.STRING,
+    },
+
+});
 
 module.exports = Podcast;
