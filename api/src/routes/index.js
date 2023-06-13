@@ -2,7 +2,7 @@ const { Router } = require('express');
 const {  getPodcast } = require('../controllers/index.controllers');
 const router = Router();
 
-router.get('/', getPodcast);
+router.get('/podcast', getPodcast);
 
 
 module.exports = router;

@@ -8,7 +8,6 @@ const getPodcast = async (req, res) => {
     const entries = feed.entry;
 
     const podcasts = entries.map((entry) => ({
-      id: entry.id.attributes["im:id"],
       name: entry["im:name"].label,
       image: entry["im:image"][2].label,
       description: entry.summary.label,

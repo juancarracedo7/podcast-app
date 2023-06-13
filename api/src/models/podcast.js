@@ -3,7 +3,7 @@ const db = require('../database/index');
 
 const Podcast = db.define('Podcast', {
   id: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },

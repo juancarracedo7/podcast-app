@@ -16,14 +16,14 @@ app.use(require('./routes/index'));
 
 
 const connect = async () => {
-    await Podcast.sync({ force: true });
+    await Podcast.sync();
     console.log('Podcast table created');
     };
 
 // Iniciar el servidor
 async function startServer() {
   try {
-    await db.sync({ force: false});
+    await db.sync();
     console.log('Conexión exitosa a la base de datos');
     await connect();
     app.listen(3001, () => {
