@@ -1,5 +1,6 @@
 import {  useDispatch } from 'react-redux';
 import { filterPodcast } from '../../store/slices/podcast/index.js';
+import * as styled from './styles.js';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -9,12 +10,12 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
-      <input
+    <styled.SearchBarContainer>
+      <styled.SearchInput
         type="text"
         onChange={handleSearch}
-        placeholder="Buscar por nombre o título"
+        placeholder="Filter podcasts..."
       />
-    </div>
+    </styled.SearchBarContainer>
   );
 }

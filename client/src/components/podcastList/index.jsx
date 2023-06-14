@@ -1,47 +1,40 @@
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPodcast, filterPodcast } from '../../store/slices/podcast/index.js';
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPodcast } from '../../store/slices/podcast/index.js';
 import * as styled from "./styles";
+import EmptyResultsScreen from '../emptySearch/index.jsx';
+import SearchBar from '../searchbar/index.jsx'; 
+import Counter from '../counter/index.jsx';
 
 export default function PodcastList() {
   const dispatch = useDispatch();
-  const {  filteredPodcast } = useSelector((state) => state.podcast);
-  const [searchTerm, setSearchTerm] = useState('');
+  const { filteredPodcast } = useSelector((state) => state.podcast);
 
   useEffect(() => {
     dispatch(getPodcast());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(filterPodcast(searchTerm));
-  }, [dispatch, searchTerm]);
-
   return (
     <>
-    <div>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Buscar por nombre o título"
-      />
-    </div>
-    <styled.PodcastContainer>
-      {filteredPodcast.length > 0 ? (
-        filteredPodcast.map((item) => (
-          <styled.PodcastCardWrapper key={item.id}>
-            <styled.PodcastImage src={item.image} alt={item.name} />
-            <styled.PodcastName>{item.name}</styled.PodcastName>
-            <styled.PodcastTitle>
-              <strong>Author:</strong> {item.title}
-            </styled.PodcastTitle>
-          </styled.PodcastCardWrapper>
-        ))
+      <SearchBar /> 
+      <Counter filteredPodcast={filteredPodcast} />
+      {filteredPodcast.length === 0 ? (
+        <EmptyResultsScreen />
       ) : (
-        <p>No se encontraron resultados para la búsqueda.</p>
+        <styled.PodcastContainer>
+          {filteredPodcast.map((item) => (
+            <styled.PodcastCardWrapper key={item.idPodcast}>
+              <styled.CustomLink to={`/details/${item.idPodcast}`}>
+                <styled.PodcastImage src={item.image} alt={item.name} />
+                <styled.PodcastName>{item.name}</styled.PodcastName>
+                <styled.PodcastTitle>
+                  <strong>Author:</strong> {item.title.slice(item.title.indexOf(' - ') + 3)}
+                </styled.PodcastTitle>
+              </styled.CustomLink>
+            </styled.PodcastCardWrapper>
+          ))}
+        </styled.PodcastContainer>
       )}
-     </styled.PodcastContainer>
-     </>
+    </>
   );
 }
