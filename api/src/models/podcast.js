@@ -2,11 +2,6 @@ const {  DataTypes } = require('sequelize');
 const db = require('../database/index');
 
 const Podcast = db.define('Podcast', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-  },
   name: {
     type: DataTypes.TEXT,
   },

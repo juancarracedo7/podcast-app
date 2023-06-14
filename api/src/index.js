@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const db = require('./database/index');
 const Podcast = require('../src/models/podcast');
+const PodcastDetail = require('./models/podcastDetails');
 
 // Middleware
 app.use(cors());
@@ -17,13 +18,14 @@ app.use(require('./routes/index'));
 
 const connect = async () => {
     await Podcast.sync();
+    await PodcastDetail.sync();
     console.log('Podcast table created');
     };
 
 // Iniciar el servidor
 async function startServer() {
   try {
-    await db.sync();
+    await db.sync({ force: true});
     console.log('Conexión exitosa a la base de datos');
     await connect();
     app.listen(3001, () => {
