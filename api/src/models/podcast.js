@@ -6,7 +6,7 @@ const Podcast = db.define('Podcast', {
     type: DataTypes.TEXT,
   },
   image : {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     },
     description: {
         type: DataTypes.TEXT,
@@ -18,16 +18,16 @@ const Podcast = db.define('Podcast', {
         type: DataTypes.TEXT,
     },
     link : {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     artist : {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     category : {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
     releaseDate : {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
     },
 
 });

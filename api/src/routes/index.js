@@ -4,7 +4,7 @@ const router = Router();
 
 router.get('/podcast', getPodcast);
 
-router.get('/details/:id', getPodcastDetails);
+router.get('/details/:trackId', getPodcastDetails);
 
 
 

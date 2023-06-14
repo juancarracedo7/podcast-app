@@ -29,24 +29,36 @@ const getPodcast = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 const getPodcastDetails = async (req, res) => {
-  const podcastId = req.params.id;
+  const trackId = req.params.trackId;
 
   try {
-    const response = await axios.get(`https://itunes.apple.com/lookup?id=${podcastId}&country=US&media=podcast&entity=podcastEpisode&limit=100`);
+    const response = await axios.get(`https://itunes.apple.com/lookup?id=${trackId}&country=US&media=podcast&entity=podcastEpisode&limit=100`);
     const results = response.data.results;
 
     if (results && results.length > 0) {
       const detailsArray = results.map(result => {
-        const { artistName } = result;
+        const { artistName, trackId, artworkUrl100 } = result;
         const { trackTimeMillis, releaseDate, previewUrl, episodeUrl, trackName } = result;
-        return { artistName, trackName, trackTimeMillis, releaseDate, previewUrl, episodeUrl };
+        return { artistName, trackName, trackTimeMillis, releaseDate, previewUrl, episodeUrl, trackId, artworkUrl100 };
       });
 
-     await PodcastDetail.bulkCreate(detailsArray);
+      const responsePodcast = await axios.get("https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json");
+      const feed = responsePodcast.data.feed;
+      const entries = feed.entry;
 
-      res.json(detailsArray);
+      const podcasts = entries.map((entry) => ({
+        description: entry.summary ? entry.summary.label : '',
+      }));
+
+      const combinedInfo = detailsArray.map((details, index) => ({
+        ...details,
+        description: podcasts[index] ? podcasts[index].description : '',
+      }));
+
+      await PodcastDetail.bulkCreate(combinedInfo);
+
+      res.json(combinedInfo);
     } else {
       res.status(404).json({ error: 'Podcast not found' });
     }
@@ -55,5 +67,6 @@ const getPodcastDetails = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 module.exports = { getPodcast, getPodcastDetails };
