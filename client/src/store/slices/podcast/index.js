@@ -8,6 +8,7 @@ export const podcastSlice = createSlice({
     filteredPodcast: [],
     loading: false,
     error: null,
+    details: null,
   },
   reducers: {
     podcastRequest: (state) => {
@@ -30,6 +31,15 @@ export const podcastSlice = createSlice({
         return podcastName.includes(search) || podcastTitle.includes(search);
       });
     },
+    getPodcastDetails: (state) => {
+      state.details = null; 
+    },
+    getPodcastDetailsSuccess: (state, action) => {
+      state.details = action.payload;
+    },
+    getPodcastDetailsFail: (state, action) => {
+      state.error = action.payload;
+    },
   },
 });
 
@@ -38,6 +48,9 @@ export const {
   podcastSuccess,
   podcastFail,
   filterPodcast,
+  getPodcastDetails,
+  getPodcastDetailsSuccess,
+  getPodcastDetailsFail,
 } = podcastSlice.actions;
 
 export const getPodcast = () => async (dispatch) => {
@@ -47,6 +60,16 @@ export const getPodcast = () => async (dispatch) => {
     dispatch(podcastSuccess(data));
   } catch (error) {
     dispatch(podcastFail(error.message));
+  }
+};
+
+export const fetchPodcastDetails = (trackId) => async (dispatch) => {
+  try {
+    dispatch(getPodcastDetails());
+    const { data } = await axios.get(`http://localhost:3001/details/${trackId}`);
+    dispatch(getPodcastDetailsSuccess(data));
+  } catch (error) {
+    dispatch(getPodcastDetailsFail("Error fetching podcast details"));
   }
 };
 
