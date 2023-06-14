@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const commonFontFamily = "Arial, sans-serif";
 
+
 export const LineSeparator = styled.hr`
   margin: 10px 0;
   border: none;
@@ -65,7 +66,13 @@ export const Loading = styled.div`
 
 export const EpisodeCountContainer = styled.div`
   position: absolute;
+  margin: 10px;
+  width: 80%;
   top: 0;
   right: 0;
-  margin: 10px;
+`;
+
+export const TrackListContainer = styled.div`
+display: flex;
+align-items: flex-start
 `;

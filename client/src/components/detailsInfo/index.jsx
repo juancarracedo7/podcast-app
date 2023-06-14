@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { fetchPodcastDetails } from "../../store/slices/podcast/index";
 import * as styled from "./styles";
 import EpisodeCount from "../episodeCount";
+import TrackList from "../trackList";
 
 export default function DetailInfo() {
   const { trackId } = useParams();
@@ -24,10 +25,11 @@ export default function DetailInfo() {
 
 
   return (
-    <>
+  <>
      <styled.EpisodeCountContainer>
         <EpisodeCount podcastDetails={podcastDetails} />
       </styled.EpisodeCountContainer>
+      
     <styled.Container>
     {podcastDetails && (
       <>
@@ -39,10 +41,12 @@ export default function DetailInfo() {
         <styled.LineSeparator />
         <styled.Description>Description: {podcastDetails[0].description}</styled.Description>
         </styled.Details>
-        
         </>
     )}
   </styled.Container>
-  </>
+  <styled.TrackListContainer>
+      <TrackList podcastDetails={podcastDetails} />
+      </styled.TrackListContainer>
+</>
   );
 }

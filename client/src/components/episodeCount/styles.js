@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
+const commonFontFamily = "Arial, sans-serif";
+
 export const EpisodeCard = styled.div`
   display: flex;
   align-items: center;
   width: 100%; /* Aumenta el ancho de la tarjeta según tus necesidades */
   height: 100px; /* Ajusta la altura de la tarjeta según tus necesidades */
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
   background-color: #f5f5f5;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 `;
 
 export const EpisodeCountContainer = styled.div`
@@ -27,4 +29,5 @@ export const EpisodeText = styled.p`
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0;
+  font-family: ${commonFontFamily};
 `;
