@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -26,3 +27,10 @@ export const Content = styled.div`
   flex: 1;
   padding: 20px;
 `;
+
+export const CustomLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+  `;
+
+
