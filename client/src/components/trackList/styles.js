@@ -5,7 +5,7 @@ const commonFontFamily = "Arial, sans-serif";
 
 export const TableWrapper = styled.div`
   margin-top: 20px;
-  width: 50%;
+  width: 90%;
   overflow-x: auto;
   display: flex;
   justify-content: center;
@@ -15,6 +15,12 @@ export const TableWrapper = styled.div`
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+  
+  @media (max-width: 1607px) {
+    width: 80%;
+    margin-left: 160px;
+  }
 `;
 
 export const Table = styled.table`

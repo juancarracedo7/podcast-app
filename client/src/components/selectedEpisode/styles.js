@@ -10,6 +10,7 @@ export const EpisodeContainer = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
+  margin-top: 110px;
 
   // TABLET
     @media (max-width: 1607px) {
