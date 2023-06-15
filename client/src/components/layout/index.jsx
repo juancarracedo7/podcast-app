@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
           <styled.CustomLink to="/">
             <styled.Title>Podcaster</styled.Title>
           </styled.CustomLink>
-          {location.pathname === "/" && isLoading && <styled.LoadingIndicator />}
+          {isLoading && <styled.LoadingIndicator />}
         </styled.Header>
         <styled.Content>{children}</styled.Content>
       </styled.Container>
