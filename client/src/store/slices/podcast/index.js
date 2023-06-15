@@ -9,7 +9,7 @@ export const podcastSlice = createSlice({
     loading: false,
     error: null,
     details: null,
-    lastRequestDate: null, // Agrega una propiedad para almacenar la fecha de la última solicitud
+    lastRequestDate: null, 
   },
   reducers: {
     podcastRequest: (state) => {
@@ -41,7 +41,7 @@ export const podcastSlice = createSlice({
     getPodcastDetailsFail: (state, action) => {
       state.error = action.payload;
     },
-    // Agregar una acción para actualizar la fecha de la última solicitud
+   
     updateLastRequestDate: (state) => {
       state.lastRequestDate = new Date().toISOString();
     },
@@ -70,7 +70,7 @@ export const getPodcast = () => async (dispatch, getState) => {
       const oneDayMilliseconds = 24 * 60 * 60 * 1000;
 
       if (currentDate - lastRequestDateObj < oneDayMilliseconds) {
-        // Si ha pasado menos de un día desde la última solicitud, utilizar la data en caché
+        
         dispatch(podcastSuccess(JSON.parse(cachedData)));
         return;
       }
@@ -79,8 +79,8 @@ export const getPodcast = () => async (dispatch, getState) => {
     dispatch(podcastRequest());
     const { data } = await axios.get("http://localhost:3001/podcast");
     dispatch(podcastSuccess(data));
-    dispatch(cachePodcastData()); // Guardar la data en el localStorage
-    dispatch(updateLastRequestDate()); // Actualizar la fecha de la última solicitud
+    dispatch(cachePodcastData()); 
+    dispatch(updateLastRequestDate()); 
   } catch (error) {
     dispatch(podcastFail(error.message));
   }

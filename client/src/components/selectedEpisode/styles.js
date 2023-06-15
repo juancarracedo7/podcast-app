@@ -12,7 +12,6 @@ export const EpisodeContainer = styled.div`
   right: 20px;
   margin-top: 110px;
 
-  // TABLET
     @media (max-width: 1607px) {
         width: 70%;
     }

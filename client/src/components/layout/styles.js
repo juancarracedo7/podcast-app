@@ -1,14 +1,12 @@
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
-// Animación de titilación
 const blinkAnimation = keyframes`
   0% { opacity: 1; }
   50% { opacity: 0.5; }
   100% { opacity: 1; }
 `;
 
-// Estilos del componente LoadingIndicator
 export const LoadingIndicator = styled.div`
   position: absolute;
   top: 25px;

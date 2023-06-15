@@ -5,9 +5,8 @@ import SelectedEpisode from "../selectedEpisode";
 
 export default function EpisodeDetailInfo() {
     const podcastDetails = useSelector((state) => state.podcast.details);
-    const {trackId} = useParams() // Obtener el ID del episodio desde la URL
+    const {trackId} = useParams() 
 
-    // Filtrar la información del episodio que coincide con el ID en la URL
     const selectedEpisode = podcastDetails.find((track) => track.trackId === Number(trackId));
 
     return (

@@ -13,7 +13,7 @@ export default function PodcastList() {
   const dispatch = useDispatch();
   const { filteredPodcast } = useSelector((state) => state.podcast);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // Número de elementos por página
+  const itemsPerPage = 12; 
 
   useEffect(() => {
     dispatch(getPodcast());
