@@ -13,7 +13,7 @@ export const PodcastCardWrapper = styled.div`
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 300px;
+  height: 320px;
   margin: 50px 0 50px 0;
 `;
 
@@ -41,4 +41,11 @@ export const PodcastName = styled.h2`
 export const PodcastTitle = styled.p`
   font-size: 14px;
   margin-top: 5px;
+`;
+
+export const CounterSearchWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  gap: 10px;
 `;

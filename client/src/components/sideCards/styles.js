@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const commonFontFamily = "Arial, sans-serif";
 
@@ -57,3 +58,8 @@ export const Description = styled.p`
   font-family: ${commonFontFamily};
   font-weight: bold;
 `;
+
+export const CustomLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+  `;

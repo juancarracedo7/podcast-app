@@ -6,6 +6,7 @@ import EmptyResultsScreen from '../emptySearch/index.jsx';
 import SearchBar from '../searchbar/index.jsx'; 
 import Counter from '../counter/index.jsx';
 import Pagination from '../pagination/index.jsx';
+import { truncateAuthor } from '../../utils/format.js';
 
 
 export default function PodcastList() {
@@ -29,8 +30,10 @@ export default function PodcastList() {
 
   return (
     <>
-      <SearchBar /> 
+      <styled.CounterSearchWrapper>
       <Counter filteredPodcast={filteredPodcast} />
+      <SearchBar />
+    </styled.CounterSearchWrapper>
       {currentItems.length === 0 ? (
         <EmptyResultsScreen />
       ) : (
@@ -42,7 +45,7 @@ export default function PodcastList() {
                   <styled.PodcastImage src={item.image} alt={item.name} />
                   <styled.PodcastName>{item.name}</styled.PodcastName>
                   <styled.PodcastTitle>
-                    <strong>Author:</strong> {item.title.slice(item.title.indexOf(' - ') + 3)}
+                  <strong>Author:</strong> {truncateAuthor(item.title.slice(item.title.indexOf(' - ') + 3), 29)}
                   </styled.PodcastTitle>
                 </styled.CustomLink>
               </styled.PodcastCardWrapper>

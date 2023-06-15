@@ -15,6 +15,7 @@ export const TableWrapper = styled.div`
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  height: auto;
 
   
   @media (max-width: 1607px) {
