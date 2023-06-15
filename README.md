@@ -60,8 +60,8 @@ Este es el archivo README para la aplicación de Podcast, la cual te permite ver
 
     npm install
 
-    npm start
-    La aplicación se ejecutará en http://localhost:3000 y podrás acceder a ella desde tu navegador web.
+    npm run dev
+    La aplicación se ejecutará en http://localhost:5173 y podrás acceder a ella desde tu navegador web.
 
 *Uso
 
