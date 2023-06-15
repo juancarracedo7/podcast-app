@@ -45,7 +45,7 @@ Este es el archivo README para la aplicación de Podcast, la cual te permite ver
     Crea un archivo .env en el directorio backend y configura las variables de entorno necesarias. Puedes encontrar un ejemplo de las variables necesarias en el archivo .env.ejemplo.
     Inicia el servidor del backend:
 
-    npm start
+    npm run dev
     El servidor estará disponible en http://localhost:3001.
 
 *Configuración del frontend
