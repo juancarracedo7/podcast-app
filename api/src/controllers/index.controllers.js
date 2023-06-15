@@ -12,7 +12,7 @@ const getPodcast = async (req, res) => {
       idPodcast: entry.id.attributes["im:id"],
       name: entry["im:name"].label,
       image: entry["im:image"][2].label,
-      description: entry.summary.label,
+      description: entry.summary ? entry.summary.label : '',
       price: parseFloat(entry["im:price"].attributes.amount),
       title: entry.title.label,
       link: entry.link.attributes.href,
@@ -29,6 +29,7 @@ const getPodcast = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 const getPodcastDetails = async (req, res) => {
   const trackId = req.params.trackId;
 
@@ -67,6 +68,5 @@ const getPodcastDetails = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 
 module.exports = { getPodcast, getPodcastDetails };
