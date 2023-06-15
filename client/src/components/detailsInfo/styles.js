@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-const commonFontFamily = "Arial, sans-serif";
-
-
-
-export const Loading = styled.div`
-  font-weight: bold;
-  font-family: ${commonFontFamily};
-`;
 
 export const EpisodeCountContainer = styled.div`
   position: absolute;
@@ -15,9 +7,13 @@ export const EpisodeCountContainer = styled.div`
   width: 80%;
   top: 0;
   right: 0;
+
+  @media (max-width: 1607px) {
+    width: 70%;
+  }
 `;
 
 export const TrackListContainer = styled.div`
-display: flex;
-align-items: flex-start
+  display: flex;
+  align-items: flex-start;
 `;

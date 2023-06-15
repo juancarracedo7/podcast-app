@@ -24,7 +24,7 @@ export default function PodcastList() {
         <styled.PodcastContainer>
           {filteredPodcast.map((item) => (
             <styled.PodcastCardWrapper key={item.idPodcast}>
-              <styled.CustomLink to={`/details/${item.idPodcast}`}>
+              <styled.CustomLink to={`/podcast/${item.idPodcast}`}>
                 <styled.PodcastImage src={item.image} alt={item.name} />
                 <styled.PodcastName>{item.name}</styled.PodcastName>
                 <styled.PodcastTitle>

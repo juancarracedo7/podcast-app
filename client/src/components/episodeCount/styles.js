@@ -5,8 +5,8 @@ const commonFontFamily = "Arial, sans-serif";
 export const EpisodeCard = styled.div`
   display: flex;
   align-items: center;
-  width: 100%; /* Aumenta el ancho de la tarjeta según tus necesidades */
-  height: 100px; /* Ajusta la altura de la tarjeta según tus necesidades */
+  width: 100%; 
+  height: 100px; 
   border: 1px solid white;
   border-radius: 5px;
   margin: 10px;
