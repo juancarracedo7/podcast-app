@@ -1,7 +1,7 @@
+import EpisodeDetailInfo from "../components/episodeDetailInfo";
+
 export default function EpisodeDetails () {
     return (
-        <div>
-        hola 
-        </div>
+        <EpisodeDetailInfo />
     )
 }

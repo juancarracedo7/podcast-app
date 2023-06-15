@@ -5,6 +5,7 @@ import { fetchPodcastDetails } from "../../store/slices/podcast/index";
 import * as styled from "./styles";
 import EpisodeCount from "../episodeCount";
 import TrackList from "../trackList";
+import SideCards from "../sideCards";
 
 export default function DetailInfo() {
   const { trackId } = useParams();
@@ -13,7 +14,6 @@ export default function DetailInfo() {
   const loading = useSelector((state) => state.podcast.loading);
 
 
-  console.log("DETALLES DEL PODCAST", podcastDetails);
   useEffect(() => {
     dispatch(fetchPodcastDetails(trackId));
   }, [dispatch, trackId]);
@@ -22,28 +22,12 @@ export default function DetailInfo() {
     return <styled.Loading>Loading...</styled.Loading>;
   }
 
-
-
   return (
   <>
      <styled.EpisodeCountContainer>
         <EpisodeCount podcastDetails={podcastDetails} />
       </styled.EpisodeCountContainer>
-      
-    <styled.Container>
-    {podcastDetails && (
-      <>
-        <styled.Image src={podcastDetails[0].artworkUrl100} alt="podcast" />
-        <styled.Details>
-        <styled.LineSeparator />
-        <styled.TrackName>{podcastDetails[0].trackName}</styled.TrackName>
-        <styled.ArtistName>By {podcastDetails[0].artistName}</styled.ArtistName>
-        <styled.LineSeparator />
-        <styled.Description>Description: {podcastDetails[0].description}</styled.Description>
-        </styled.Details>
-        </>
-    )}
-  </styled.Container>
+    <SideCards podcastDetails={podcastDetails} />
   <styled.TrackListContainer>
       <TrackList podcastDetails={podcastDetails} />
       </styled.TrackListContainer>
