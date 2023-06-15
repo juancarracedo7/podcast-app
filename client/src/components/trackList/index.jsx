@@ -1,4 +1,5 @@
 import * as styled from "./styles";
+import {formatDate, formatDuration} from "../../utils/format";
 
 export default function TrackList({ podcastDetails }) {
     return (
@@ -14,7 +15,7 @@ export default function TrackList({ podcastDetails }) {
           <tbody>
             {podcastDetails && podcastDetails.map((track) => (
               <tr key={track.trackId}>
-                <styled.TableDataCell>{track.trackName}</styled.TableDataCell>
+                <styled.CustomLink to={`/episode/${track.trackId}`}><styled.TableDataCell>{track.trackName}</styled.TableDataCell></styled.CustomLink>
                 <styled.TableDataCell>{formatDate(track.releaseDate)}</styled.TableDataCell>
                 <styled.TableDataCell>{formatDuration(track.trackTimeMillis)}</styled.TableDataCell>
               </tr>
@@ -25,16 +26,4 @@ export default function TrackList({ podcastDetails }) {
     );
   }
   
-  // Función auxiliar para formatear la fecha a horario en formato 'US'
-  function formatDate(date) {
-    const options = { month: 'numeric', day: 'numeric', year: 'numeric' };
-    return new Date(date).toLocaleDateString('en-US', options);
-  }
-  
-  // Función auxiliar para formatear la duración en milisegundos a un formato legible
-  function formatDuration(duration) {
-    const minutes = Math.floor(duration / 60000);
-    const seconds = Math.floor((duration % 60000) / 1000);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }
   

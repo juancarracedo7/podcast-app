@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 const commonFontFamily = "Arial, sans-serif";
 
@@ -43,4 +44,9 @@ export const TableDataCell = styled.td`
   padding: 10px;
   text-align: left;
 
+`;
+
+export const CustomLink = styled(Link)`
+text-decoration: none;
+color: inherit;
 `;
